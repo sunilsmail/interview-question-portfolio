@@ -17,4 +17,4 @@ how do you decide when to use pure components
 code splitting
 what happen when you set setState in render method
 context api and its uses
-eorror boundary in react
+eorror boundary in react.
