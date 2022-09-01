@@ -1,4 +1,4 @@
-difference b/w async and defer in script loading <br>
+difference between async and defer in script loading <br>
 diff b/w flex and grid <br>
 rem and em propeerties in css <br>
 how many diff ways you can make a webpage responsive  <br>
