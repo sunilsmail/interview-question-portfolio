@@ -6,6 +6,8 @@
       security features provided by the framework. Here are some recommendations:
 ##### Input Validation:
 Ensure that all user inputs are validated on both the client and server sides. Validate and sanitize user inputs to reject any malicious content. Use validation attributes, regular expressions, or custom validation logic to validate input data.
+
+
 [HttpPost]
 public IActionResult SomeAction([FromBody] UserInputModel userInput)
 {
@@ -13,9 +15,6 @@ public IActionResult SomeAction([FromBody] UserInputModel userInput)
     {
         return BadRequest(ModelState);
     }
-
-    // Process the input
-    // ...
 }
 
 
