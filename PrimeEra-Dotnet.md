@@ -15,7 +15,7 @@ public IActionResult SomeAction([FromBody] UserInputModel userInput)
     {
         return BadRequest(ModelState);
     }
-}
+}```
 
 
 # CSRF attack
