@@ -488,9 +488,74 @@ where rn = 5
 </details>
 
 ---
+
+
+# 6. what is Controllercontext in .net core web api
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 
+In ASP.NET Core Web API, the ControllerContext class represents information about the current state of the controller. It provides access to various properties and methods that give you information about the HTTP request, the response, the route data, and other aspects of the controller's context.
+
+Here are some of the key properties and methods of the ControllerContext class in ASP.NET Core Web API:
+
+##### 	HttpContext Property:
+The HttpContext property provides access to the HttpContext object, which contains information about the current HTTP request and response.
+
+```c#
+HttpContext httpContext = ControllerContext.HttpContext;
+```
+
+##### Request Property:
+The Request property provides access to the HttpRequest object, which contains information about the incoming HTTP request.
+```c#
+HttpRequest request = ControllerContext.Request;
+```
+
+##### Response Property:
+The Response property provides access to the HttpResponse object, which allows you to modify the HTTP response.
+```c#
+HttpResponse response = ControllerContext.Response;
+```
+
+##### RouteData Property:
+The RouteData property provides access to route-related information, such as route values and route data tokens.
+```c#
+RouteData routeData = ControllerContext.RouteData;
+```	
+
+##### ActionDescriptor Property:
+The ActionDescriptor property provides information about the action method being executed, including attributes, parameters, and other details.
+```c#
+ActionDescriptor actionDescriptor = ControllerContext.ActionDescriptor;
+```	
+
+##### ModelState Property:
+The ModelState property provides access to the model state, which represents validation errors and other state information about the model.
+```c#
+ModelStateDictionary modelState = ControllerContext.ModelState;
+```	
+
+##### Result Property:
+The Result property gets or sets the ActionResult that will be executed when the action method is finished.
+```c#
+IActionResult result = ControllerContext.Result;
+```	
+
+##### Url Property:
+The Url property provides access to a UrlHelper instance, which allows you to generate URLs based on route values.
+```c#
+IUrlHelper urlHelper = ControllerContext.Url;
+```	
+
+The ControllerContext is often used within the context of a controller action method. It provides a way to interact with various aspects of the HTTP request and response, route data, and other controller-related information. You can access it directly within your controller or use it within action filters, which can inspect or modify the controller context during the request lifecycle.
+</p>
+</details>
+
+---
 # Triggers in sql
 # How to clear all the sessions of the users and have single active session
-# Controller Context
 # After creating token how to increase the time?
 # How to update records of male to female and female to male?
  update user set gender = (case gender when 'male' then 'female' else 'male' end);
