@@ -1,40 +1,21 @@
 
 ---
 
-###### 1. What's the output?
+# 1. Filters in asp.net core
 
-```javascript
-function sayHi() {
-  console.log(name);
-  console.log(age);
-  var name = 'Lydia';
-  let age = 21;
-}
+- A: Authorization Filters
+- B: Action filters
+- C: Result Filters	
+- D: Exception Filters	
+- E: Resource Filters
+- E: Custom Filters
 
-sayHi();
-```
-
-- A: `Lydia` and `undefined`
-- B: `Lydia` and `ReferenceError`
-- C: `ReferenceError` and `21`
-- D: `undefined` and `ReferenceError`
 
 <details><summary><b>Answer</b></summary>
 <p>
 
-#### Answer: D
+#### Answer: 
 
-Within the function, we first declare the `name` variable with the `var` keyword. This means that the variable gets hoisted (memory space is set up during the creation phase) with the default value of `undefined`, until we actually get to the line where we define the variable. We haven't defined the variable yet on the line where we try to log the `name` variable, so it still holds the value of `undefined`.
-
-Variables with the `let` keyword (and `const`) are hoisted, but unlike `var`, don't get <i>initialized</i>. They are not accessible before the line we declare (initialize) them. This is called the "temporal dead zone". When we try to access the variables before they are declared, JavaScript throws a `ReferenceError`.
-
-</p>
-</details>
-
----
-
-
-# Filters in asp.net core
 In ASP.NET Core, filters are components that enable you to run code before or after the execution of a controller action or an entire request. Filters provide a way to implement cross-cutting concerns such as logging, authorization, exception handling, and caching. There are several types of filters in ASP.NET Core, and each type serves a specific purpose. Here are some common types of filters:
 
 1. ##### Authorization Filters:
@@ -227,6 +208,11 @@ public class HomeController : Controller
 In this example, the MyCustomActionFilter filter is applied to the Index action method. When the Index action is executed, the OnActionExecuting method of the filter will be called before the action, and the OnActionExecuted method will be called after the action.
 
 Remember that you need to have the necessary logging infrastructure in place (in this case, a logger injected into the filter and controller) to see the log messages. Adjust the filter logic and dependencies based on your specific requirements.
+
+</p>
+</details>
+
+---
 # XSS attack: 
       Cross-Site Scripting (XSS) is a security vulnerability that allows 
       attackers to inject malicious scripts into web pages viewed by other users. 
