@@ -26,6 +26,7 @@ public IActionResult SomeAction([FromBody] UserInputModel userInput)
 # Controller Context
 # After creating token how to increase the time?
 # How to update records of male to female and female to male?
+ update user set gender = (case gender when 'male' then 'female' else 'male' end);
 # Custom filters
 # Design patterns 
 # Authentication techniques
