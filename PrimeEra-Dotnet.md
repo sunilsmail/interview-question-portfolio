@@ -8,14 +8,16 @@
 Ensure that all user inputs are validated on both the client and server sides. Validate and sanitize user inputs to reject any malicious content. Use validation attributes, regular expressions, or custom validation logic to validate input data.
 
 
-```C# [HttpPost]
+```C#
+[HttpPost]
 public IActionResult SomeAction([FromBody] UserInputModel userInput)
 {
     if (!ModelState.IsValid)
     {
         return BadRequest(ModelState);
     }
-}````
+}
+```
 
 
 # CSRF attack
