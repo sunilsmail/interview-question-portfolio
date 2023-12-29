@@ -1,5 +1,5 @@
 ---
-.net core:
+.Net core:
 ---
 
 # 1. icomparer vs icomparable c#
