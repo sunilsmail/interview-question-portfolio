@@ -452,7 +452,31 @@ Remember that the actual implementation details may vary based on your specific 
 </details>
 
 ---
-# CTE in sql
+# 5. Common Table Expressions in sql
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 
+The common table expression (CTE) is a powerful construct in SQL that helps simplify a query. CTEs work as virtual tables (with records and columns), created during the execution of a query, used by the query, and eliminated after query execution. CTEs often act as a bridge to transform the data in source tables to the format expected by the query.
+
+A common table expression, or CTE, is a temporary named result set created from a simple SELECT statement that can be used in a subsequent SELECT statement. Each SQL CTE is like a named query, whose result is stored in a virtual table (a CTE) to be referenced later in the main query.
+
+The best way to learn common table expressions is through practice. I recommend LearnSQL.com's interactive Recursive Queries course. It contains over 100 exercises that teach CTEs starting with the basics and progressing to advanced topics like recursive common table expressions.
+
+```sql
+WITH my_cte AS (
+  SELECT a,b,c
+  FROM T1
+)
+SELECT a,c
+FROM my_cte
+WHERE ....
+```
+</p>
+</details>
+
+---
 # Triggers in sql
 # How to clear all the sessions of the users and have single active session
 # Controller Context
