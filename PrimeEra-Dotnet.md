@@ -3,12 +3,12 @@
 
 # 1. Filters in asp.net core
 
-- A: Authorization Filters
-- B: Action filters
-- C: Result Filters	
-- D: Exception Filters	
-- E: Resource Filters
-- E: Custom Filters
+- Authorization Filters
+- Action filters
+- Result Filters	
+- Exception Filters	
+- Resource Filters
+- Custom Filters
 
 
 <details><summary><b>Answer</b></summary>
