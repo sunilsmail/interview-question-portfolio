@@ -46,6 +46,19 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 4. ##### AntiXss NuGet Package:
 Consider using the AntiXss library, a NuGet package that provides additional protection against XSS attacks.
+ #### dotnet add package AntiXSS
+ Then, use it in your code:
+```C#
+ var sanitizedInput = Sanitizer.GetSafeHtmlFragment(userInput);
+```
+
+5. ##### Use Razor Pages and Views Safely:
+   If you're using Razor Pages or Views, make sure to use Razor syntax properly. Razor automatically HTML-encodes content by default.
+   ```Html
+   <p>@Model.Property</p>
+
+   ```
+
 
 # CSRF attack
 # User defined types in sql
