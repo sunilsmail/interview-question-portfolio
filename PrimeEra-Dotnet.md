@@ -8,14 +8,14 @@
 Ensure that all user inputs are validated on both the client and server sides. Validate and sanitize user inputs to reject any malicious content. Use validation attributes, regular expressions, or custom validation logic to validate input data.
 
 
-[HttpPost]
-public IActionResult SomeAction([FromBody] UserInputModel userInput)
-{
-    if (!ModelState.IsValid)
-    {
-        return BadRequest(ModelState);
-    }
-}
+```[HttpPost]
+```public IActionResult SomeAction([FromBody] UserInputModel userInput)
+```{
+ ```   if (!ModelState.IsValid)
+```    {
+  ```      return BadRequest(ModelState);
+```    }
+```}
 
 
 # CSRF attack
@@ -30,4 +30,6 @@ public IActionResult SomeAction([FromBody] UserInputModel userInput)
 # Custom filters
 # Design patterns 
 # Authentication techniques
+# JWT auth
+#
 
