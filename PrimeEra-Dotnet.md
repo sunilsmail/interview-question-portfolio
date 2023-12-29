@@ -717,10 +717,10 @@ By adhering to these security policies and best practices, you can enhance the s
 
 <details><summary><b>Answer</b></summary>
 <p>
-#### Answer: 
+Answer: 
 
 
-```sql#
+```sql
 update user set gender = (case gender when 'male' then 'female' else 'male' end);
 
 ```
