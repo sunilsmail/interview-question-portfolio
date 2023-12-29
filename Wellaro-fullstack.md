@@ -1,3 +1,5 @@
+.net core:
+
 # 1. icomparer vs icomparable c#
 # 2. dispose vs finalise
 # 3. if we create destructor will it decreases performance
@@ -7,6 +9,8 @@
 # 7. early binding and late binding 
 
 ---
+---
+Angular:
 
 # 1. dependency injection in angular
 # 2. how to handle http request error response
