@@ -1,4 +1,6 @@
+---
 .net core:
+---
 
 # 1. icomparer vs icomparable c#
 # 2. dispose vs finalise
@@ -9,8 +11,8 @@
 # 7. early binding and late binding 
 
 ---
----
 Angular:
+---
 
 # 1. dependency injection in angular
 # 2. how to handle http request error response
