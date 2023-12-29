@@ -452,6 +452,7 @@ Remember that the actual implementation details may vary based on your specific 
 </details>
 
 ---
+
 # 5. Common Table Expressions in sql
 
 <details><summary><b>Answer</b></summary>
@@ -472,6 +473,16 @@ WITH my_cte AS (
 SELECT a,c
 FROM my_cte
 WHERE ....
+
+
+with ordered_salary as
+(
+SELECT name, salary, ROW_NUMBER() OVER(ORDER BY salary DESC) rn
+FROM salary_table
+)
+select name, salary
+from ordered_salary
+where rn = 5
 ```
 </p>
 </details>
