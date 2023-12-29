@@ -88,4 +88,5 @@ By incorporating these practices, you can significantly reduce the risk of XSS v
 # Authentication techniques
 # JWT auth
 # what security policies we need to take while uploading a file 
+# Merge in sql
 
