@@ -59,6 +59,20 @@ Consider using the AntiXss library, a NuGet package that provides additional pro
 
    ```
 
+6. ##### HTTPOnly and Secure Cookies:
+If your application uses cookies, set the HttpOnly and Secure flags to enhance security.
+```C#
+services.ConfigureApplicationCookie(options =>
+{
+    options.HttpOnly = true;
+    options.SecurePolicy = CookieSecurePolicy.Always;
+});
+
+```
+7. ##### Regular Security Audits:
+Regularly review your codebase for potential XSS vulnerabilities and conduct security audits. Automated tools and manual code reviews can help identify and address security issues.
+
+By incorporating these practices, you can significantly reduce the risk of XSS vulnerabilities in your ASP.NET Core Web API. Additionally, stay informed about security best practices and updates to ensure ongoing protection against evolving security threats.
 
 # CSRF attack
 # User defined types in sql
