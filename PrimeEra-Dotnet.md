@@ -300,7 +300,103 @@ By incorporating these practices, you can significantly reduce the risk of XSS v
 
 ---
 
-# CSRF attack
+
+# 3. CSRF attack
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 
+
+ In ASP.NET Core Web API, protecting against CSRF attacks is equally important. However, the approach is slightly different compared to traditional web applications with server-rendered views. Here's how you can implement CSRF protection in an ASP.NET Core Web API:
+	  
+	  1. ##### Configure Anti-Forgery in Startup.cs:
+In the ConfigureServices method of your Startup.cs file, configure anti-forgery services. Note that in a Web API scenario, you might not be using Razor views, so the anti-forgery token might not be generated automatically in the views.
+
+
+```C#
+public void ConfigureServices(IServiceCollection services)
+{
+    // Other service configurations
+
+    services.AddAntiforgery(options =>
+    {
+        options.HeaderName = "X-CSRF-TOKEN"; // Customize the header name if needed
+        options.SuppressXFrameOptionsHeader = false; // Optional: Include if you need X-Frame-Options header
+    });
+
+    // Add MVC services for Web API
+    services.AddControllers();
+}
+
+```
+
+2. ##### Generate and Include Anti-Forgery Token in Requests:
+In a Web API scenario, you need to generate and include the anti-forgery token manually in the request headers. This typically involves retrieving the anti-forgery token from the server and including it in the headers of subsequent requests.
+```C#
+[ApiController]
+[Route("api/[controller]")]
+public class MyController : ControllerBase
+{
+    private readonly IAntiforgery _antiforgery;
+
+    public MyController(IAntiforgery antiforgery)
+    {
+        _antiforgery = antiforgery;
+    }
+
+    [HttpGet]
+    public IActionResult GetAntiForgeryTokens()
+    {
+        var tokens = _antiforgery.GetAndStoreTokens(HttpContext);
+
+        // Return the anti-forgery token in the response
+        return Ok(new { csrfToken = tokens.RequestToken });
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Submit([FromBody] FormData formData)
+    {
+        // Code for handling form submission
+    }
+}
+
+```
+
+The [ValidateAntiForgeryToken] attribute, in this context, checks the presence and validity of the anti-forgery token in the request headers.
+
+3. ##### Include Anti-Forgery Token in AJAX Requests:
+When making AJAX requests to your API, ensure that you include the anti-forgery token in the request headers.
+
+In your Startup.cs file:
+```javascrip#
+// Example using jQuery
+$.ajax({
+    url: "/api/submit",
+    type: "POST",
+    headers: {
+        "X-CSRF-TOKEN": csrfToken // Include the anti-forgery token here
+    },
+    contentType: "application/json",
+    data: JSON.stringify({
+        // Your data here
+    }),
+    success: function(response) {
+        // Handle success
+    },
+    error: function(error) {
+        // Handle error
+    }
+});
+
+```
+Remember that the actual implementation details may vary based on your specific application architecture and requirements. Adjust the provided examples according to your application's structure and the way you handle anti-forgery tokens in your particular scenario.
+
+</p>
+</details>
+
+---
 # User defined types in sql
 # CTE in sql
 # Triggers in sql
