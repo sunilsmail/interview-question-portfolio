@@ -213,9 +213,6 @@ Remember that you need to have the necessary logging infrastructure in place (in
 </details>
 
 ---
-
----
-
 # 2. XSS attack
 
 <details><summary><b>Answer</b></summary>
