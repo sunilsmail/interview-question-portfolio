@@ -397,7 +397,61 @@ Remember that the actual implementation details may vary based on your specific 
 </details>
 
 ---
-# User defined types in sql
+
+# 4. User defined types in sql
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 
+
+ SQL Server allows a particular data type [table] to store a data set. In this data type, we specify the data types and their properties similar to a table.
+
+In the below user-defined table type, we defined two columns [ProductName] and [Cost] with their corresponding data types. Table-valued parameters provide flexibility and better performance than the temporary table in some cases.SQL Server does not maintain the statistics for these table-valued parameters; therefore, you should take you should test your requirements and workload.
+
+
+```sql
+CREATE TYPE ProductTableType AS TABLE (
+    ProductName VARCHAR(50),
+    Cost INT);
+
+```
+
+
+2. ##### In the next step, we create a stored procedure that uses the user-defined table data type and selects the values from the variable:
+
+It uses READONLY arguments for the table-valued parameters. We cannot perform the data manipulation operations – Update, delete, insert on the table-valued parameters in the stored procedure body.
+
+```sql
+CREATE PROCEDURE GetProducts
+    @p ProductTableType READONLY
+as
+SELECT ProductName,COST
+    FROM @P
+    RETURN 0
+;
+GO
+```
+
+
+
+3. ##### Now, inserts few records in the table variable and executes the stored procedure.
+```sql
+DECLARE @p as ProductTableType
+INSERT @p
+    VALUES ('AC', 123)
+        , ('CA', 345)
+        , ('DB', 543)
+; 
+    
+exec GetProducts @p
+```
+Remember that the actual implementation details may vary based on your specific application architecture and requirements. Adjust the provided examples according to your application's structure and the way you handle anti-forgery tokens in your particular scenario.
+
+</p>
+</details>
+
+---
 # CTE in sql
 # Triggers in sql
 # How to clear all the sessions of the users and have single active session
