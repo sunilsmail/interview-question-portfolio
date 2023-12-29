@@ -213,12 +213,22 @@ Remember that you need to have the necessary logging infrastructure in place (in
 </details>
 
 ---
-# XSS attack: 
-      Cross-Site Scripting (XSS) is a security vulnerability that allows 
+
+---
+
+# 2. XSS attack
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: 
+
+ Cross-Site Scripting (XSS) is a security vulnerability that allows 
       attackers to inject malicious scripts into web pages viewed by other users. 
       To prevent XSS in ASP.NET Core Web API, you should follow best practices and utilize 
       security features provided by the framework. Here are some recommendations:
-1. ##### Input Validation:
+	  
+	  1. ##### Input Validation:
 Ensure that all user inputs are validated on both the client and server sides. Validate and sanitize user inputs to reject any malicious content. Use validation attributes, regular expressions, or custom validation logic to validate input data.
 
 
@@ -287,6 +297,11 @@ services.ConfigureApplicationCookie(options =>
 Regularly review your codebase for potential XSS vulnerabilities and conduct security audits. Automated tools and manual code reviews can help identify and address security issues.
 
 By incorporating these practices, you can significantly reduce the risk of XSS vulnerabilities in your ASP.NET Core Web API. Additionally, stay informed about security best practices and updates to ensure ongoing protection against evolving security threats.
+
+</p>
+</details>
+
+---
 
 # CSRF attack
 # User defined types in sql
