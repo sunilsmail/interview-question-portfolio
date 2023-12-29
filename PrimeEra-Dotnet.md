@@ -713,14 +713,29 @@ By adhering to these security policies and best practices, you can enhance the s
 </details>
 
 ---
+# 8. How to update records of male to female and female to male?
+
+<details><summary><b>Answer</b></summary>
+<p>
+#### Answer: 
+
+
+```sql#
+update user set gender = (case gender when 'male' then 'female' else 'male' end);
+
+```
+	
+</p>
+</details>
+
+---
 # Triggers in sql
 # How to clear all the sessions of the users and have single active session
 # After creating token how to increase the time?
-# How to update records of male to female and female to male?
- update user set gender = (case gender when 'male' then 'female' else 'male' end);
 # Custom filters
 # Design patterns 
 # Authentication techniques
 # JWT auth
 # Merge in sql
+# difference between framework and core?
 
