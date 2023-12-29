@@ -19,6 +19,11 @@ public IActionResult SomeAction([FromBody] UserInputModel userInput)
 }
 ```
 
+##### HTML Encoding:
+Encode output data before rendering it to the client. ASP.NET Core provides the HtmlEncoder class to encode data.
+```C#
+@Html.Raw(HtmlEncoder.Default.Encode(model.Property))
+```
 
 # CSRF attack
 # User defined types in sql
