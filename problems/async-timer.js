@@ -8,7 +8,11 @@ return new Promise(resolve
 
 setTimeout(function(){
 
-resolve( Email sent to ${user}"); . 1000);
+resolve( Email sent to ${user}");  1000);
+
+}
+
+}
 
 async function sendEmail(){
 
