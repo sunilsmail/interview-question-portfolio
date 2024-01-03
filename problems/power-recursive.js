@@ -1,28 +1,16 @@
-function pow(a, b)
-{
+function power(base, exponent) {
+  // Base case: exponent is 0, result is 1
+  if (exponent === 0) {
+    return 1;
+  }
 
-    if (b > 0)
-
-        return multiply(a, pow(a, b - 1));
-
-    else
-
-        return 1;
+  // Recursive case: multiply base by power of base with reduced exponent
+  return base * power(base, exponent - 1);
 }
- 
-// A recursive function to get x*y 
 
-function multiply(x, y)
-{
+// Example usage:
+const base = 2;
+const exponent = 3;
+const result = power(base, exponent);
+console.log(`${base}^${exponent} = ${result}`);
 
-    if (y > 0)
-
-        return (x + multiply(x, y - 1));
-
-    else
-
-        return 0;
-}
- 
-// Driver code
-console.log(pow(5, 3));
