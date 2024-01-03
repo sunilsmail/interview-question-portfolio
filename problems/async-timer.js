@@ -1,3 +1,5 @@
+
+const users ["nisha@gmail.com", "sneha@gmail.com", "sam@gmail.com");
 function delay(user){
 
 // Email sent to sneha@gmail.com Email sent to sam@gmail.com
