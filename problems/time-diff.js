@@ -23,3 +23,8 @@ const endTimestamp = new Date("2024-01-03T15:30:00").getTime();
 
 const timeDifferenceMessage = timeDifference(startTimestamp, endTimestamp);
 console.log(`Time difference: ${timeDifferenceMessage}`);
+
+
+const currentTime = new Date().toLocaleTimeString("en-US", { hour12: false });
+const timeList = ["07:16:08", "07:16:25", "07:15:45", "07:14:00"];
+
