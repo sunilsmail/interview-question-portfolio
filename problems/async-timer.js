@@ -28,4 +28,6 @@ console.log(confirmation);
 
 console.log('Email sent to all the users...)
 
+}
+
 sendEmail():
