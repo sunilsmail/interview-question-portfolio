@@ -10,7 +10,7 @@ setTimeout(function(){
 
 resolve( Email sent to ${user}");  1000);
 
-}
+})
 
 }
 
