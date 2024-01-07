@@ -1,1 +1,6 @@
-function leetcode974(array){}
+function leetcode974(array){
+
+let prefixSum=[];
+
+for
+}
