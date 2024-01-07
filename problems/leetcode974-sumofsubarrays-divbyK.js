@@ -1,1 +1,1 @@
-function leetcofe974(){}
+function leetcode974(array){}
