@@ -93,4 +93,7 @@ module.exports = {
   },
 };
 
- https://blog.theashishmaurya.me/how-to-minimize-react-bundle-size-for-faster-loading-times#heading-tools-for-measuring-load-times
+bundle size minification https://blog.theashishmaurya.me/how-to-minimize-react-bundle-size-for-faster-loading-times#heading-tools-for-measuring-load-times
+
+SSR 
+https://youtu.be/TQQPAU21ZUw?si=oQSGMrvbSAxUgzEW
