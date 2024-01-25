@@ -218,3 +218,17 @@ default-src 'self': Sets the default source for content types not explicitly spe
 script-src 'self' https://trusted-scripts.com: Allows scripts only from the same origin ('self') and from the specified trusted domain (https://trusted-scripts.com).
 style-src 'self' 'unsafe-inline': Permits styles from the same origin ('self') and allows inline styles ('unsafe-inline').
 Adjust the directives based on your specific needs and trusted sources. Make sure to test and verify the functionality of your web page after implementing the CSP to ensure that it doesn't unintentionally block essential resources.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://trusted-scripts.com; style-src 'self' 'unsafe-inline';">
+    <title>Your Web Page</title>
+</head>
+<body>
+    <!-- Your HTML content goes here -->
+
+    <script src="https://trusted-scripts.com/example.js"></script>
+</body>
+</html>
