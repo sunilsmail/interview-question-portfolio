@@ -39,3 +39,30 @@ WHEN NOT MATCHED BY TARGET THEN
 
 -- View the updated target table
 SELECT * FROM Employee;
+
+
+using (var dbContextTransaction = context.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
+{
+    try
+    {
+        // run your query to ensure no competing reservation exists
+        // use AsNoTracking to ensure the query runs against your database in the transaction context
+        context.Reservations.AsNoTracking()...;
+
+        // if it is valid, insert your reservations
+        context.Reservations.Add(...);
+
+        // run the insert statement
+        context.SaveChanges();
+
+        // commit the transaction
+        dbContextTransaction.Commit();
+    }
+    catch
+    {
+        // roll back the transaction if anything went wrong so that your database isn't locked
+        dbContextTransaction.Rollback();
+
+        throw;
+    }
+}
