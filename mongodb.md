@@ -53,3 +53,69 @@ public class UserRepository
 
     // Implement other CRUD operations similarly
 }
+
+
+
+_----_------+
+
+
+// User model
+public class User
+{
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
+
+    [Required]
+    public string Name { get; set; }
+
+    [Required]
+    [EmailAddress]
+    public string Email { get; set; }
+}
+
+// UserController
+[Route("api/[controller]")]
+[ApiController]
+public class UserController : ControllerBase
+{
+    private readonly MongoDbContext _dbContext;
+
+    public UserController(MongoDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAllUsers()
+    {
+        var users = await _dbContext.Users.Find(user => true).ToListAsync();
+        return Ok(users);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateUser([FromBody] User user)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        await _dbContext.Users.InsertOneAsync(user);
+        return CreatedAtAction(nameof(GetUserById), new { id = user.Id }, user);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetUserById(string id)
+    {
+        var user = await _dbContext.Users.Find(u => u.Id == id).FirstOrDefaultAsync();
+        if (user == null)
+        {
+            return NotFound();
+        }
+        return Ok(user);
+    }
+
+    // Add other CRUD actions (Update, Delete) similarly
+}
+
