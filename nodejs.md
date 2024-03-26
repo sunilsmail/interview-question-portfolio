@@ -299,3 +299,63 @@ async function loginUser(req, res) {
 }
 
 module.exports = { loginUser };
+
+
+
+// src/controllers/userController.js
+const fs = require('fs');
+const path = require('path');
+const bcrypt = require('bcrypt');
+const { registerSchema } = require('../utils/validation');
+const logger = require('../utils/logger');
+
+const usersFilePath = path.join(__dirname, '../data/users.json');
+
+function getUsers() {
+  try {
+    const usersData = fs.readFileSync(usersFilePath, 'utf8');
+    return JSON.parse(usersData);
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveUsers(users) {
+  fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2));
+}
+
+async function registerUser(req, res) {
+  try {
+    const { username, email, password } = req.body;
+
+    // Validate input data
+    const { error } = registerSchema.validate(req.body);
+    if (error) {
+      return res.status(400).json({ error: error.details[0].message });
+    }
+
+    const users = getUsers();
+
+    // Check if user with the same email already exists
+    const existingUser = users.find((u) => u.email === email);
+    if (existingUser) {
+      return res.status(409).json({ error: 'Email already exists' });
+    }
+
+    // Hash the password before saving
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = { id: users.length + 1, username, email, password: hashedPassword };
+    users.push(newUser);
+
+    saveUsers(users);
+
+    res.status(201).json({ message: 'User registered successfully' });
+  } catch (error) {
+    logger.error('Error registering user:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+module.exports = { registerUser };
+
