@@ -255,3 +255,47 @@ This example demonstrates setting up a basic RESTful API in Node.js using Expres
 Message ChatGPT…
 
 ChatGPT can make mistakes. Consider checking important information.
+
+
+
+
+// src/controllers/userController.js
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const path = require('path');
+const { jwtSecret } = require('../config/config');
+const logger = require('../utils/logger');
+
+const usersFilePath = path.join(__dirname, '../data/users.json');
+
+function getUsers() {
+  const usersData = fs.readFileSync(usersFilePath, 'utf8');
+  return JSON.parse(usersData);
+}
+
+async function loginUser(req, res) {
+  try {
+    const { email, password } = req.body;
+
+    const users = getUsers();
+
+    const user = users.find((u) => u.email === email);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(401).json({ error: 'Invalid password' });
+    }
+
+    const token = jwt.sign({ id: user.id }, jwtSecret, { expiresIn: '1h' });
+    res.status(200).json({ token });
+  } catch (error) {
+    logger.error('Error logging in user:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+module.exports = { loginUser };
